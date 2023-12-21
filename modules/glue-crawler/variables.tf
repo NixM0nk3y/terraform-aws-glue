@@ -151,3 +151,17 @@ variable "recrawl_policy" {
   description = "A policy that specifies whether to crawl the entire dataset again, or to crawl only folders that were added since the last crawler run."
   default     = null
 }
+
+variable "lake_formation_credentials_configuration" {
+  description = <<EOF
+  (Optional) A configuration of the crawler to use Lake Formation credentials for crawling the data source. `lake_formation_credentials_configuration` as defined below.
+    (Optional) `enabled` - Whether to use Lake Formation credentials for the crawler instead of the IAM role credentials. Defaults to `false`.
+    (Optional) `account_id` - A valid AWS account ID for cross account crawls. If the data source is registered in another account, you must provide the registered account ID. Otherwise, the crawler will crawl only those data sources associated to the account.
+  EOF
+  type = object({
+    enabled    = optional(bool, false)
+    account_id = optional(string, null)
+  })
+  default  = {}
+  nullable = false
+}

@@ -16,6 +16,11 @@ resource "aws_glue_crawler" "this" {
   security_configuration = var.security_configuration
   table_prefix           = var.table_prefix
 
+  lake_formation_configuration {
+    use_lake_formation_credentials = var.lake_formation_credentials_configuration.enabled
+    account_id                     = var.lake_formation_credentials_configuration.account_id
+  }
+
   dynamic "catalog_target" {
     for_each = var.catalog_target != null ? var.catalog_target : []
 
