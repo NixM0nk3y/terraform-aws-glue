@@ -119,4 +119,13 @@ resource "aws_glue_catalog_table" "this" {
       }
     }
   }
+
+  lifecycle {
+    ignore_changes = [
+      parameters,
+      owner,
+      table_type,
+      storage_descriptor,
+    ]
+  }
 }
