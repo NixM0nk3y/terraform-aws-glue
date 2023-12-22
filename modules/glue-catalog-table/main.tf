@@ -126,6 +126,7 @@ resource "aws_glue_catalog_table" "this" {
       owner,
       table_type,
       storage_descriptor,
+      partition_keys,
     ]
   }
 }
