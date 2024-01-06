@@ -107,6 +107,7 @@ variable "delta_target" {
     connection_name = string
     delta_tables    = list(string)
     write_manifest  = bool
+    create_native_delta_table = bool
   }))
   description = "List of nested Delta target arguments."
   default     = null

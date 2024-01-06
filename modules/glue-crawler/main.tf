@@ -37,6 +37,7 @@ resource "aws_glue_crawler" "this" {
       connection_name = delta_target.value.connection_name
       delta_tables    = delta_target.value.delta_tables
       write_manifest  = delta_target.value.write_manifest
+      create_native_delta_table = delta_target.value.create_native_delta_table
     }
   }
 
